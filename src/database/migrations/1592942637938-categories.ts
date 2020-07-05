@@ -1,45 +1,39 @@
-import { MigrationInterface, QueryRunner, Table } from "typeorm";
+import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export default class categories1592942637938 implements MigrationInterface {
-
+export default class Categories1592942637938 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
-
     await queryRunner.createTable(
       new Table({
-        name: "categories",
+        name: 'categories',
         columns: [
           {
-            name: "id",
-            type: "uuid",
+            name: 'id',
+            type: 'uuid',
             isPrimary: true,
-            generationStrategy: "uuid",
-            default: "uuid_generated_v4()"
+            generationStrategy: 'uuid',
+            default: 'uuid_generate_v4()',
           },
           {
-            name: "title",
-            type: "varchar",
+            name: 'title',
+            type: 'varchar',
             isNullable: false,
           },
           {
-            name: "created_at",
-            type: "timestamp",
-            default: "now()"
+            name: 'created_at',
+            type: 'timestamp',
+            default: 'now()',
           },
           {
-            name: "updated_at",
-            type: "timestamp",
-            default: "now()"
+            name: 'updated_at',
+            type: 'timestamp',
+            default: 'now()',
           },
-
-        ]
+        ],
       }),
-    )
+    );
   }
-
-
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable("categories")
+    await queryRunner.dropTable('categories');
   }
-
 }
